@@ -16,3 +16,6 @@ function quickSort(arr) {
   
   return quickSort(left).concat(middle, quickSort(right));
 }
+
+var arr = [998, 645, 48, 689, 213, 15, 8, 16, 59, 11, 394, 43];
+console.log(quickSort(arr));

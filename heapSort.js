@@ -1,16 +1,14 @@
-var arr = [998, 645, 68, 324, 213, 15, 12, 16, 59, 98, 394, 43 ];
-
-function swap(index1, index2) {
-  var temp = arr[index1];
-  arr[index1] = arr[index2];
-  arr[index2] = temp;    
-}
-
 function heapSort(arr) {
-  var middle = Math.floor(arr.length-1/2);
+  var middle = Math.floor(arr.length/2)-1;
   var resultArr = [];
     
-  function heapify(parent) {
+  function swap(index1, index2) {
+    var temp = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2] = temp;    
+  }
+
+  function sift(parent) {
     var left;
     var right;
     var max;
@@ -32,57 +30,31 @@ function heapSort(arr) {
         break;
       }
 
+      // В случае если потомок больше родителя, меняем их местами
       swap(parent, max);
       parent = max;
-
     }
-   
-    // while (true) {
-    //   var left = 2 * parent + 1;
-    //   var right = 2 * parent + 2;
-    //   var max = right;
-    //   if (max < arr.length-1) {
-    //     if (arr[right] < arr[left]) {
-    //       max = left;
-    //     }
-
-    //     swap(parent, max);
-    //     parent = max;
-    //   } else {
-    //     break;
-    //   }
-    // }
-
-    // while(i != 0) {
-    //   var parent = Math.round((i - 1) / 2);
-    //   if (arr[i] <= arr[parent]) {
-    //     break;
-    //   } else {
-    //     swap(i, parent);
-    //   }
-    //   i = parent
-    // }
-
   }
 
 
-    
+  // Формируем кучу
+  // Начинаем с середины массива, так как в этом случае у элемента гарантированно есть потомки
   for (var i=middle; i >= 0; i--) {
-    heapify(i);
+    sift(i);
   }
-
-  // console.log(arr);
 
   for (var i = arr.length-1; i >= 0; i--) {
-    // console.log(arr);
+    // Берем первый элемент так как он максимальный
     var root = arr.shift();
-    arr.unshift(arr.pop());
     resultArr.unshift(root);
-    
-    heapify(0);
+
+    // На место первого элемента ставим последний, и просеиваем его через кучу
+    arr.unshift(arr.pop());
+    sift(0);
   }
 
-  console.log(resultArr);
+  return resultArr;
 }
 
-heapSort(arr)
+var arr = [998, 645, 48, 689, 213, 15, 8, 16, 59, 11, 394, 43];
+console.log(heapSort(arr));
