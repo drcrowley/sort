@@ -4,15 +4,16 @@ function mixer(arr) {
   var temp;
 
   while (j > 0) {
-    i = Math.floor(Math.random() * j);
+    // i = Math.floor(Math.random() * j);
+    i = Math.floor(j/2);
     console.log(i);
     temp = arr[j];
     arr[j] = arr[i];
     arr[i] = temp; 
-
-    if (arr[i] > arr[i+1] && arr[j] > arr[j+1]) {
-      j--;
-    }
+    j--;
+    // if (arr[i] > arr[i+1] && arr[j] > arr[j+1]) {
+    //   j--;
+    // }
   }
 
 
