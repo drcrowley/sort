@@ -1,3 +1,4 @@
+var o = 1;
 function heapSort(arr) {
   var middle = Math.floor(arr.length/2)-1;
   var length = arr.length;
@@ -13,7 +14,8 @@ function heapSort(arr) {
     var right;
     var max;
 
-    while(true) {
+    while(2 * parent + 2 <= limit) {
+      o++;
       left = 2 * parent + 1;
       right = 2 * parent + 2;
       max = parent;
@@ -49,7 +51,7 @@ function heapSort(arr) {
     // Просеиваем первый через кучу
     sift(0, i);
   }
-
+  console.log(o, Math.round(length * Math.log(length)));
   return arr;
 }
 
