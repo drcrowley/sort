@@ -44,13 +44,13 @@ function heapSort(arr) {
     sift(i, length);
   }
 
-  for (var i = length-1; i >= 0; i--) {
-    // На место первого элемента ставим последний
-    swap(0, i);
+  // for (var i = length-1; i >= 0; i--) {
+  //   // На место первого элемента ставим последний
+  //   swap(0, i);
 
-    // Просеиваем первый через кучу
-    sift(0, i);
-  }
+  //   // Просеиваем первый через кучу
+  //   sift(0, i);
+  // }
   console.log(o, Math.round(length * Math.log(length)));
   return arr;
 }
