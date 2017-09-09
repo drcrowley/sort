@@ -80,4 +80,5 @@ three.add(1);
 three.add(5);
 three.add(10);
 three.add(11);
+console.log(three.contains(21));
 console.log(three);
